@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="cart.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Navbar styles of contact.html css */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Style inputs */
+  input[type=text],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  /* Style the container/contact section */
+  .CONTAINER {
+    border-radius: 5px;
+    background-color: ghostwhite;
+    padding: 10px;
+  }
+
+  /* Create two columns that float next to eachother */
+  .COLUMN{
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+
+  }
+
+  /* Clear floats after the columns */
+  .ROW:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+
+    .COLUMN,
+    input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  /* end of contact.html css*/
+  
+  /* Navbar styles */
+  .Navbar {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .Navbar-logo {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: whitesmoke;
+    margin-right: auto;
+    /* This pushes the logo to the left corner */
+    padding-left: 20px;
+  }
+
+  .Navbar-menu {
+    display: flex;
+    gap: 20px;
+  }
+
+  .Navbar-item {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 25px;
+    /* Updated font size to 18px */
+    font-weight: bold;
+    /* Added font weight bold */
+  }
+
+
+
+  /* Landing page content styles */
+  .landing-container {
+    padding: 20px;
+  }
+
+  /* Image Navbar styles */
+  .image-Navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  .image-Navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
+  .image-Navbar-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .image-Navbar-item span {
+    margin-top: 10px;
+    text-align: center;
+
+  }
+
+  /* images navbar */
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+
+  .navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
+  .navbar-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .navbar-item span {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  /*slide show images css*/
+  .slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: -15px;
+
+  }
+
+  .slideshow-container img {
+    width: 800px;
+    height: 500px;
+    display: none;
+
+  }
+
+  /* Contact page styling*/
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Style inputs */
+  input[type=text],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  /* Style the container/contact section */
+  .container {
+    border-radius: 5px;
+    background-color: ghostwhite;
+    padding: 10px;
+  }
+
+  /* Create two columns that float next to eachother */
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* gallery responsive*/
+  /*     
+    div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}     */
+
+  div.gallery {
+    border: 1px solid #ccc;
+    margin: 10px;
+    overflow: hidden;
+  }
+
+  div.gallery:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+
+ .column:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  div.gallery img {
+
+    width: 249px;
+    height: 250px;
+    padding-left: 70px;
+    padding-top: 25px
+  }
+
+  div.desc {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .responsive {
+    padding: 0 10px;
+    float: left;
+    width: 24%;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .responsive {
+      width: 32%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .responsive {
+      width: 49%;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+
+
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+
+    .column,
+    input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+  /* Fading animation */
+  .fade {
+    animation: fade 3s linear infinite;
+    /* 3s duration for each image, linear animation */
+  }
+
+  /* Keyframes for fading animation */
+  @keyframes fade {
+
+    0%,
+    100% {
+      opacity: 0;
+      /* Image starts and ends with opacity 0 */
+    }
+
+    20%,
+    80% {
+      opacity: 1;
+      /* Image is fully visible from 20% to 80% of animation duration */
+    }
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      flex-wrap: nowrap;
+      /* To ensure the items stay in a single row on mobile */
+      justify-content: flex-start;
+      /* Align items to the start of the navbar */
+      padding: 10px 5px;
+      /* Adjust padding for better spacing on mobile */
+      overflow-x: scroll;
+      /* Enable horizontal scrolling on mobile */
+      -webkit-overflow-scrolling: touch;
+      /* Enable smooth scrolling on iOS devices */
+    }
+
+    .navbar-item {
+      margin: 0 5px;
+      /* Adjust margin for better spacing on mobile */
+    }
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+    }
+
+    .navbar {
+      justify-content: space-between;
+    }
+
+    .navbar-logo {
+      margin-left: 20px;
+    }
+  }
+
+  /* Responsive Styles for Mobile View */
+  @media screen and (max-width: 768px) {
+    .Navbar {
+      flex-direction: column;
+      /* Change the navbar items to be stacked vertically */
+      padding: 10px;
+      /* Adjust padding for better spacing on mobile */
+    }
+
+    .Navbar-logo {
+      margin: 10px 0;
+      /* Add some vertical margin to the logo */
+    }
+
+    .Navbar-menu {
+      display: flex;
+      flex-direction: column;
+      /* Change the menu items to be stacked vertically */
+      gap: 10px;
+      /* Add some gap between the menu items */
+    }
+
+    .Navbar-item {
+      font-size: 14px;
+      /* Decrease font size for mobile */
+      text-align: center;
+      /* Center-align the menu items */
+      padding: 5px 0;
+      /* Add padding to the menu items for better touch interaction */
+    }
+  }
+
+  /* media for our team members*/
+  @media screen and (max-width: 768px) {
+    /* Adjust column width for mobile view */
+    .column {
+      flex: 0 0 calc(50% - 16px); /* Display two columns in a row on mobile */
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    /* Adjust column width for smaller screens */
+    .column {
+      flex: 100%; /* Display each column as a single column on smaller screens */
+    }
+  }
+
+/*  About us page css is mentioned here*/
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.COlumn {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  padding-top: 50px;
+}
+
+.CArd {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.COntainer {
+  padding: 0 16px;
+}
+
+.COntainer::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.BUtton {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.BUtton:hover {
+  background-color: #555;
+}
+
+.CArd img {
+  height: 250px;
+  width: 250px;
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+@media screen and (max-width: 650px) {
+  .COlumn {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="Navbar">
+    <a class="Navbar-logo" href="#">USA Decors</a>
+    <div class="Navbar-menu">
+      <a class="Navbar-item" href="#">Home</a>
+      <a class="Navbar-item" href="#about-section">About</a>
+    <!-- Add the anchor link for the "Contact" section -->
+    <a class="Navbar-item" href="#contact-section">Contact</a>
+    <a class="Navbar-item" href="#" id="cartIcon">
+      <i class="fa fa-shopping-cart" style="font-size:30px;color:red" data-count="0"></i></a>
+      <a class="Navbar-item" href="#">Login</a>
+    </div>
+  </div>
+
+  <!-- Image Navbar -->
+  <div class="navbar">
+    <div class="navbar-item" onclick="redirectToCategory('arts.html')">
+      <img src="arts\a1.jpg" alt="Clothing">
+      <span>Arts</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('birthdaydecor.html')">
+      <img src="bithdaydecor\b1.jpg" alt="Home Decors">
+      <span>Birthday</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('curtains.html')">
+      <img src="curtains\c1.jpg" alt="Curtains">
+      <span>Curtains</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('flowers.html')">
+      <img src="flowers\f1.jpg" alt="Flowers">
+      <span>Flowers</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('hangers.html')">
+      <img src="hangers\h1.jpg" alt="Hangers">
+      <span>Hangers</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('devotional.html')">
+      <img src="devotional\d1.jpg" alt="Category 6">
+      <span>Devotional</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('flowerwase.html')">
+      <img src="flowerwase\f1.jpg" alt="Category 7">
+      <span>Flowerwase</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('frames.html')">
+      <img src="frames\f1.jpg" alt="Category 8">
+      <span>Frames</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('mats.html')">
+      <img src="mats\m1.jpg" alt="Category 9">
+      <span>Mats</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('toyes.html')">
+      <img src="toys\t1.jpg" alt="Category 10">
+      <span>Toys</span>
+    </div>
+    <div class="navbar-item" onclick="redirectToCategory('mirrors.html')">
+      <img src="mirrors/m11.jpg" alt="Category 11">
+      <span>Mirrors</span>
+    </div>
+  </div>
+  <marquee width="100%" direction="left" height="50px" style="color: red;">
+    Shop New Arrivals Online in India. Explore a wide range of New Home & Living Products at best prices
+  </marquee>
+  <!-- Landing page content -->
+  <!-- <div class="landing-container">
+  <h1>Welcome to Your Website</h1>
+   Add more content here -->
+  <center>
+    <div class="slideshow-container" style="margin-top: -30px;">
+      <!-- Add your images here with the "fade" class for the fading animation -->
+      <img
+        src="https://img.freepik.com/free-photo/armchair-green-living-room-with-copy-space_43614-910.jpg?size=626&ext=jpg&ga=GA1.2.1883756643.1687934980&semt=ais"
+        alt="Image 1" class="fade">
+      <img src="https://hometown.gumlet.io/media/cms/icons/Kitchenware/table-accents.jpg?w=400&dpr=1.3" alt="Image 2"
+        class="fade">
+      <img src="https://hometown.gumlet.io/media/cms/icons/Kitchenware/figurines.jpg?w=400&dpr=1.3" alt="Image 3"
+        class="fade">
+      <img
+        src="https://media.istockphoto.com/id/1390110775/photo/entrance-of-dining-room-with-dining-table-green-velvet-chairs-and-pink-wall-in-background.webp?b=1&s=170667a&w=0&k=20&c=bxMa4lYndtVBYCPFA-z9vmXfY9zesR3ZPhQdW1fmj9c="
+        alt="Image 2" class="fade">
+      <img
+        src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGhvbWUlMjBkZWNvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+        alt="Image 3" class="fade">
+      <img
+        src="https://img.freepik.com/free-photo/scandinavian-vintage-wood-cabinet-with-chair-by-dark-blue-wall_53876-98164.jpg?size=626&ext=jpg&ga=GA1.2.1883756643.1687934980&semt=ais"
+        alt="Image 3" class="fade">
+  </center>
+  <!-- Add more images as needed -->
+  <br><br>
+  <center>
+    <h1>Shop By Category</h1>
+  </center>
+  <br><br>
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_5terre.jpg">
+        <img src="https://hometown.gumlet.io/media/cms/icons/Kitchenware/photo-frames.jpg?w=400&dpr=1.3"
+          alt="Cinque Terre" width="600" height="400">
+      </a>
+      <div class="desc">Arts</div>
+    </div>
+  </div>
+
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_forest.jpg">
+        <img src="https://hometown.gumlet.io/media/cms/icons/Kitchenware/fountains.jpg?w=400&dpr=1.3" alt="Forest"
+          width="600" height="400">
+      </a>
+      <div class="desc">Devotional</div>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_lights.jpg">
+        <img src="https://hometown.gumlet.io/media/cms/icons/Kitchenware/candle-holders.jpg?w=400&dpr=1.3"
+          alt="Northern Lights" width="600" height="400">
+      </a>
+      <div class="desc">Hangers</div>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_mountains.jpg">
+        <img src="https://hometown.gumlet.io/media/cms/icons/Kitchenware/garden.jpg?w=400&dpr=1.3" alt="Mountains"
+          width="600" height="400">
+      </a>
+      <div class="desc">Flowerwase</div>
+    </div>
+  </div>
+<br><br>
+  <center><h1 style="padding-top: 350px;">Discover New Launches</h1></center>
+<br><br>
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_5terre.jpg">
+        <img src="https://ii2.pepperfry.com/assets/b5516f_1676636981643_Decor_1280_Discover_17feb_1.jpg"
+          alt="Cinque Terre" width="600" height="400">
+      </a>
+      <div class="desc">Bath Accessories</div>
+    </div>
+  </div>
+
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_forest.jpg">
+        <img src="https://ii2.pepperfry.com/assets/c564ee_1676637001072_Decor_1280_Discover_17feb_2.jpg" alt="Forest"
+          width="600" height="400">
+      </a>
+      <div class="desc">Wall Plates</div>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_lights.jpg">
+        <img src="https://ii2.pepperfry.com/assets/e253ca_1676637082120_Decor_1280_Discover_17feb_3.jpg"
+          alt="Northern Lights" width="600" height="400">
+      </a>
+      <div class="desc">Wooden Wall Art</div>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a target="_blank" href="img_mountains.jpg">
+        <img src="https://ii3.pepperfry.com/assets/00e45b_1676637104156_Decor_1280_Discover_17feb_4.jpg" alt="Mountains"
+          width="600" height="400">
+      </a>
+      <div class="desc">Metallic Religious Idols</div>
+    </div>
+  </div>
+
+
+  <div class="clearfix"></div>
+  <br><br>
+
+  <!-- /* about section*/ -->
+
+  <div  id="about-section" class="about-section" >
+    <h1>About USA Decors</h1>
+    <p> who we are ? and what we do? </p>
+    <p>We offer the finest quality furniture for your bedroom, dining room or living room. Whether your updating or
+      buying for an empty space, we have what's right for you!</p>
+  </div>
+  <br>
+  <h2 style="text-align:center; font-weight: bold;">Our Team</h2>
+  <div class="ROw">
+    <div class="COlumn" >
+      <div class="CArd" >
+        <img src="WhatsApp Image 2023-07-20 at 11.56.05 AM.jpeg" alt="Sai" style="height: 250px; width: 250px;">
+        <div class="COntainer" >
+         
+         <center> <h2 >Saikiran Avudurthi</h2></center>
+          <p class="title" style="color: grey;">CEO & Founder</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>saikiran.avudurthi@serole.com</p>
+          <p><button class="BUtton">Contact</button></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="COlumn">
+      <div class="CArd">
+        <img src="abhi.jpeg" alt="Abbas" style="height: 250px;
+        width: 250px;">
+        <div class="COntainer" >
+         <center> <h2>Abbas Shaik</h2></center>
+          <p class="title" style="color: grey;">Art Director</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>shaik.abbas@serole.com</p>
+          <p><button class="BUtton">Contact</button></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="COlumn">
+      <div class="CArd">
+        <img src="usha.jpeg" alt="Usha" style="height: 250px;
+        width: 250px;">
+        <div class="COntainer">
+        <center>  <h2>Usha Dharavath</h2></center>
+          <p class="title" style="color: grey;">Designer</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>usharani.dharavath@serole.com</p>
+          <p><button class="BUtton">Contact</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- contact us page  -->
+<br><br>
+  <div id="contact-section" class="CONTAINER" >
+    <div style="text-align:center;  font-weight: bold; padding-top: 550px;">
+      
+      <h2 style="text-align:center;  font-weight: bold;">Contact Us</h2>
+      <p>Swing by for a cup of coffee, or leave us a message:</p>
+    </div>
+    <div class="ROW">
+      <div class="COLUMN">
+        <img src="Screenshot (45).png" style="width:100%; transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      </div>
+      <div class="COLUMN">
+        <form action="/action_page.php">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="australia">India</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select>
+          <label for="subject">Subject</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <center>
+    <h6 style="color: red; font-weight: bold;"> @Copyrights 2023 by USA Decors </h6>
+  </center>
+  <script>
+    function redirectToCategory(categoryUrl) {
+      // Redirect to the specified category HTML file
+      window.location.href = categoryUrl;
+    }
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      const slides = document.getElementsByClassName("fade");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // Change image every 3 seconds (adjust as needed)
+    }
+
+  </script>
+  <script>
+    // Function to update the cart count in the Navbar cart icon
+    function updateCartCount() {
+      const cartIcon = document.getElementById("cartIcon");
+      const cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count from local storage, default to 0 if not found
+      if (cartIcon) {
+        cartIcon.dataset.count = cartCount;
+        cartIcon.innerHTML = `<i class="fa fa-shopping-cart" style="font-size:30px;color:red"></i> ${cartCount}`;
+      }
+    }
+  
+    // Function to add a product to the cart
+    function addToCart() {
+      let cartCount = parseInt(localStorage.getItem("cartCount") || 0); // Retrieve cart count from local storage, default to 0 if not found
+      cartCount++;
+      localStorage.setItem("cartCount", cartCount); // Update cart count in local storage
+      updateCartCount();
+    }
+  
+    // Function to handle clicking on "Add to Cart" button
+    function handleAddToCartButtonClick() {
+      addToCart();
+      // Additional logic can be implemented here, like updating the cart in the backend.
+    }
+  
+    // Add click event listeners to "Add to Cart" buttons
+    const addToCartButtons = document.querySelectorAll(".add-to-cart a");
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", handleAddToCartButtonClick);
+    });
+  
+    // Call this function to initialize the cart count when the page loads
+    updateCartCount();
+  </script>
+  
+  
+  </body>
+  </html>

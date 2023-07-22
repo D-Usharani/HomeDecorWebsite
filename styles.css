@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* background-image: url('WALLPAPERS.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+header {
+    background-color: #212A3E;
+    padding: 10px 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+   
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 18px;
+}
+
+.nav-links li a:hover {
+    color: #CBB26A;
+}
+.dropdown-menu li a {
+    color: #333;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}

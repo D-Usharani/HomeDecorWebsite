@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="cart.js"></script>
+<style>
+  body {
+    background-color:white;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-gap: 50px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    border-color: black;
+    
+  }
+  
+  .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #FAF8F1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+       padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: whitesmoke;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: black;
+    margin-top: 10px;
+  }
+  
+  .description {
+    color: black;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .add-to-cart {
+    margin-top: 10px;
+  }
+  
+  .add-to-cart a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #FF5403;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart a:hover {
+    background-color: #F90716;
+  }
+  @media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Navbar styles */
+.Navbar {
+  background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.Navbar-logo {
+font-size: 30px;
+font-weight:bold;
+text-decoration: none;
+color: white;
+margin-right: auto; /* This pushes the logo to the left corner */
+padding-left: 20px;
+}
+
+.Navbar-menu {
+display: flex;
+gap: 20px;
+}
+
+.Navbar-item {
+text-decoration: none;
+color: white;
+font-size: 18px; /* Updated font size to 18px */
+font-weight: bold; /* Added font weight bold */
+}
+
+
+  
+  /* Landing page content styles */
+  .landing-container {
+    padding: 20px;
+  }
+  
+  /* Image Navbar styles */
+  .image-Navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  
+  .image-Navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    cursor: pointer;
+  }
+  
+  .image-Navbar-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .image-Navbar-item span {
+    margin-top: 10px;
+    text-align: center;
+    
+  }
+  /* images navbar */
+  
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.navbar-item img {
+  width: 50px;
+    height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.navbar-item span {
+  margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*slide show images css*/
+/* .slideshow-container {
+    position: relative;
+    max-width: 100%;
+ margin: -15px;
+       
+  }
+
+  .slideshow-container img {
+    width: 800px;
+    height: 500px;
+    display: none;
+   
+  } */
+
+  /* Fading animation */
+  .fade {
+    animation: fade 3s linear infinite; /* 3s duration for each image, linear animation */
+  }
+
+  /* Keyframes for fading animation */
+  @keyframes fade {
+    0%, 100% {
+      opacity: 0; /* Image starts and ends with opacity 0 */
+    }
+    20%, 80% {
+      opacity: 1; /* Image is fully visible from 20% to 80% of animation duration */
+    }
+  }
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-wrap: nowrap; /* To ensure the items stay in a single row on mobile */
+    justify-content: flex-start; /* Align items to the start of the navbar */
+    padding: 10px 5px; /* Adjust padding for better spacing on mobile */
+    overflow-x: scroll; /* Enable horizontal scrolling on mobile */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS devices */
+  }
+  
+  .navbar-item {
+    margin: 0 5px; /* Adjust margin for better spacing on mobile */
+  }
+}
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+    }
+    
+    .navbar {
+      justify-content: space-between;
+    }
+
+    .navbar-logo {
+      margin-left: 20px;
+    }
+  }
+
+  /* Responsive Styles for Mobile View */
+@media screen and (max-width: 768px) {
+.Navbar {
+  flex-direction: column; /* Change the navbar items to be stacked vertically */
+  padding: 10px; /* Adjust padding for better spacing on mobile */
+}
+
+.Navbar-logo {
+  margin: 10px 0; /* Add some vertical margin to the logo */
+}
+
+.Navbar-menu {
+  display: flex;
+  flex-direction: column; /* Change the menu items to be stacked vertically */
+  gap: 10px; /* Add some gap between the menu items */
+}
+
+.Navbar-item {
+  font-size: 14px; /* Decrease font size for mobile */
+  text-align: center; /* Center-align the menu items */
+  padding: 5px 0; /* Add padding to the menu items for better touch interaction */
+}
+}
+</style>
+
+
+</head>
+<body>
+  
+  <!-- Navbar -->
+<div class="Navbar">
+  <a class="Navbar-logo" href="#">USA Decors</a>
+  <div class="Navbar-menu">
+    <a class="Navbar-item" href="landingpage.html">Home</a>
+    <a class="Navbar-item" href="landingpage.html">About</a>
+    <a class="Navbar-item" href="landingpage.html">Contact</a>
+    <a class="Navbar-item" href="#" id="cartIcon">
+      <i class="fa fa-shopping-cart" style="font-size:30px;color:red" data-count="0"></i></a>
+    <a class="Navbar-item" href="landingpage.html">Login</a>
+  </div>
+</div>
+
+
+<!-- Image Navbar -->
+<div class="navbar">
+  <div class="navbar-item" onclick="redirectToCategory('arts.html')">
+    <img src="arts\a1.jpg" alt="Clothing">
+    <span>Arts</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('birthdaydecor.html')">
+    <img src="bithdaydecor\b1.jpg" alt="Home Decors">
+    <span>Birthday</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('curtains.html')">
+    <img src="curtains\c1.jpg" alt="Curtains">
+    <span>Curtains</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('flowers.html')">
+    <img src="flowers\f1.jpg" alt="Flowers">
+    <span>Flowers</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('hangers.html')">
+    <img src="hangers\h1.jpg" alt="Hangers">
+    <span>Hangers</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('devotional.html')">
+    <img src="devotional\d1.jpg" alt="Category 6">
+    <span>Devotional</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('flowerwase.html')">
+    <img src="flowerwase\f1.jpg" alt="Category 7">
+    <span>Flowerwase</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('frames.html')">
+    <img src="frames\f1.jpg" alt="Category 8">
+    <span>Frames</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('mats.html')">
+    <img src="mats\m1.jpg" alt="Category 9">
+    <span>Mats</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('toyes.html')">
+    <img src="toys\t1.jpg" alt="Category 10">
+    <span>Toys</span>
+  </div>
+  <div class="navbar-item" onclick="redirectToCategory('mirrors.html')">
+    <img src="mirrors/m11.jpg" alt="Category 11">
+    <span>Mirrors</span>
+  </div>
+</div>
+  <div class="grid-container">
+    <div class="grid-item">
+      <img class="image" src="mats\m1.jpg" alt="Image 1">
+      <div class="price">$10.99</div>
+      <div class="description">Description 1</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m2.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <!-- Add more grid items for the remaining images -->
+    <div class="grid-item">
+      <img class="image" src="mats\m3.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m4.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m5.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+
+   <div class="grid-item">
+      <img class="image" src="mats\m6.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m12.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m1.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m8.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m9.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m1o.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+    <div class="grid-item">
+      <img class="image" src="mats\m11.jpg"  alt="Image 2">
+      <div class="price">$9.99</div>
+      <div class="description">Description 2</div>
+      <div class="add-to-cart"><a href="#">Add to Cart</a></div>
+    </div>
+  </div>
+  <script>
+    function redirectToCategory(categoryUrl) {
+     // Redirect to the specified category HTML file
+     window.location.href = categoryUrl;
+   }
+ </script>
+ <script>
+  // Function to update the cart count in the Navbar cart icon
+  function updateCartCount() {
+    const cartIcon = document.getElementById("cartIcon");
+    const cartCount = localStorage.getItem("cartCount") || 0; // Retrieve cart count from local storage, default to 0 if not found
+    if (cartIcon) {
+      cartIcon.dataset.count = cartCount;
+      cartIcon.innerHTML = `<i class="fa fa-shopping-cart" style="font-size:30px;color:red"></i> ${cartCount}`;
+    }
+  }
+
+  // Function to add a product to the cart
+  function addToCart() {
+    let cartCount = parseInt(localStorage.getItem("cartCount") || 0); // Retrieve cart count from local storage, default to 0 if not found
+    cartCount++;
+    localStorage.setItem("cartCount", cartCount); // Update cart count in local storage
+    updateCartCount();
+  }
+
+  // Function to handle clicking on "Add to Cart" button
+  function handleAddToCartButtonClick() {
+    addToCart();
+    // Additional logic can be implemented here, like updating the cart in the backend.
+  }
+
+  // Add click event listeners to "Add to Cart" buttons
+  const addToCartButtons = document.querySelectorAll(".add-to-cart a");
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", handleAddToCartButtonClick);
+  });
+
+  // Call this function to initialize the cart count when the page loads
+  updateCartCount();
+</script>
+
+
+</body>
+</html>
